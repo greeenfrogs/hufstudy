@@ -3,6 +3,7 @@ package com.hufstudy.back.domain;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "users") //충돌하지 않는 이름 사용
 public class User {
 
     @Id
