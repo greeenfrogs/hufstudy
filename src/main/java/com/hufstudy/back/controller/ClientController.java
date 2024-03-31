@@ -3,12 +3,10 @@ package com.hufstudy.back.controller;
 import com.hufstudy.back.domain.Client;
 import com.hufstudy.back.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api/client")
 public class ClientController {
 
     private final ClientService clientService;
