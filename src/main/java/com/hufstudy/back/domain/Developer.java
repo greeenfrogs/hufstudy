@@ -2,6 +2,8 @@ package com.hufstudy.back.domain;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Developer {
     @Id
@@ -16,6 +18,10 @@ public class Developer {
     private String introduction;
 
     public Developer() {}
+
+    @OneToMany
+    @JoinColumn(name = "developer_id")
+    private List<File> files;
 
     public Long getId() {
         return id;
@@ -39,5 +45,13 @@ public class Developer {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
+    }
+
+    public List<File> getFiles() {
+        return files;
+    }
+
+    public void setFiles(List<File> files) {
+        this.files = files;
     }
 }

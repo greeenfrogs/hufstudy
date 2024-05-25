@@ -5,7 +5,6 @@ import com.hufstudy.back.service.UserService;
 import com.hufstudy.back.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 @RestController
 @RequestMapping("/api/users")
 public class UserController {

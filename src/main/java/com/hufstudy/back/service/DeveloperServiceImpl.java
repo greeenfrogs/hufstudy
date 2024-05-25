@@ -1,6 +1,7 @@
 package com.hufstudy.back.service;
 
 import com.hufstudy.back.domain.Developer;
+import com.hufstudy.back.domain.File;
 import com.hufstudy.back.repository.DeveloperRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,4 +34,11 @@ public class DeveloperServiceImpl implements DeveloperService{
         }).orElseThrow(()-> new RuntimeException("Developer not found with id " + developerId));
     }
 
+    @Override
+    public Developer addFileToDeveloper(Long developerId, File file) {
+        Developer developer = developerRepository.findById(developerId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid developer Id: " + developerId));
+        developer.getFiles().add(file);
+        return developerRepository.save(developer);
+    }
 }

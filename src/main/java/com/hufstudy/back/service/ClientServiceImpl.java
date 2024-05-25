@@ -1,10 +1,18 @@
 package com.hufstudy.back.service;
 
 import com.hufstudy.back.domain.Client;
+import com.hufstudy.back.domain.File;
 import com.hufstudy.back.repository.ClientRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.Optional;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
 @Service
 public class ClientServiceImpl implements ClientService {
@@ -34,4 +42,13 @@ public class ClientServiceImpl implements ClientService {
         }).orElseThrow(() -> new RuntimeException("Client not found with id " + clientId));
 
     }
+
+    @Override
+    public Client addFileToClient(Long clientId, File file) {
+        Client client = clientRepository.findById(clientId)
+                .orElseThrow(() -> new IllegalArgumentException("Invalid client Id: " + clientId));
+        client.getFiles().add(file);
+        return clientRepository.save(client);
+    }
+
 }
