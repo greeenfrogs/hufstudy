@@ -34,11 +34,4 @@ public class DeveloperServiceImpl implements DeveloperService{
         }).orElseThrow(()-> new RuntimeException("Developer not found with id " + developerId));
     }
 
-    @Override
-    public Developer addFileToDeveloper(Long developerId, File file) {
-        Developer developer = developerRepository.findById(developerId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid developer Id: " + developerId));
-        developer.getFiles().add(file);
-        return developerRepository.save(developer);
-    }
 }

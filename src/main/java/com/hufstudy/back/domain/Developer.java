@@ -19,10 +19,6 @@ public class Developer {
 
     public Developer() {}
 
-    @OneToMany
-    @JoinColumn(name = "developer_id")
-    private List<File> files;
-
     public Long getId() {
         return id;
     }
@@ -45,13 +41,5 @@ public class Developer {
 
     public void setIntroduction(String introduction) {
         this.introduction = introduction;
-    }
-
-    public List<File> getFiles() {
-        return files;
-    }
-
-    public void setFiles(List<File> files) {
-        this.files = files;
     }
 }

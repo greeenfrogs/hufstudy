@@ -17,12 +17,10 @@ import java.io.IOException;
 public class ClientController {
 
     private final ClientService clientService;
-    private final FileService fileService;
 
     @Autowired
-    public ClientController(ClientService clientService, FileService fileService) {
+    public ClientController(ClientService clientService) {
         this.clientService = clientService;
-        this.fileService = fileService;
     }
 
     // 의뢰처 변경 요청 처리
@@ -35,22 +33,4 @@ public class ClientController {
     public Client updateCInfo(@PathVariable Long clientId, @RequestParam String clientInfo) {
         return clientService.updateClientInfo(clientId, clientInfo);
     }
-    // 파일 업로드 요청 처리
-    @PostMapping("/{clientId}/files")
-    public ResponseEntity<Client> addClientFile(@PathVariable Long clientId, @RequestParam("file") MultipartFile file) {
-        try {
-            // 파일을 저장하고 파일 엔티티를 가져옴
-            File savedFile = fileService.saveFile(file);
-
-            // 파일 엔티티를 클라이언트와 연관시킴
-            Client updatedClient = clientService.addFileToClient(clientId, savedFile);
-
-            return new ResponseEntity<>(updatedClient, HttpStatus.OK);
-        } catch (IOException e) {
-            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
-        } catch (IllegalArgumentException e) {
-            return new ResponseEntity<>(null, HttpStatus.BAD_REQUEST);
-        }
-    }
-
 }

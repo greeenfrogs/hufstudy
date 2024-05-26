@@ -16,10 +16,6 @@ public class Client {
 
     private String client;
     private String clientInfo;
-    @OneToMany
-    @JoinColumn(name="client_id")
-    private List<File> files;
-
 
     public Client() {}
 
@@ -46,12 +42,6 @@ public class Client {
     public void setClientInfo(String clientInfo) {
         this.clientInfo = clientInfo;
     }
-    public List<File> getFiles() {
-        return files;
-    }
 
-    public void setFiles(List<File> files) {
-        this.files = files;
-    }
 
 }

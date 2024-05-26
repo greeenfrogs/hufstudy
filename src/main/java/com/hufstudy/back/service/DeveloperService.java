@@ -6,7 +6,5 @@ import com.hufstudy.back.domain.File;
 public interface DeveloperService {
     Developer updateShortBio(Long developerId, String shortBio);
     Developer updateIntroduction(Long developerId, String introduction);
-    Developer addFileToDeveloper(Long developerId, File file);
-
 
 }

@@ -43,12 +43,4 @@ public class ClientServiceImpl implements ClientService {
 
     }
 
-    @Override
-    public Client addFileToClient(Long clientId, File file) {
-        Client client = clientRepository.findById(clientId)
-                .orElseThrow(() -> new IllegalArgumentException("Invalid client Id: " + clientId));
-        client.getFiles().add(file);
-        return clientRepository.save(client);
-    }
-
 }
