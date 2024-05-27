@@ -1,10 +1,18 @@
 package com.hufstudy.back.domain;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 public class Client {
     @Id
     private Long id;
@@ -16,32 +24,5 @@ public class Client {
 
     private String client;
     private String clientInfo;
-
-    public Client() {}
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getClient() {
-        return client;
-    }
-
-    public void setClient(String client) {
-        this.client = client;
-    }
-
-    public String getClientInfo() {
-        return clientInfo;
-    }
-
-    public void setClientInfo(String clientInfo) {
-        this.clientInfo = clientInfo;
-    }
-
 
 }
