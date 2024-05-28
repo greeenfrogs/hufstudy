@@ -21,10 +21,16 @@ public class File {
 
     private String fileName;
     private String filePath;
-    private LocalDateTime uploadTime;
     private String fileType;
 
     @ManyToOne
     @JoinColumn(name = "user_id", nullable = false)
     private User user;
+
+    public File(String fileName, String filePath, String fileType, User user) {
+        this.fileName = fileName;
+        this.filePath = filePath;
+        this.fileType = fileType;
+        this.user = user;
+    }
 }

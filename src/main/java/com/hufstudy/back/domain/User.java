@@ -1,5 +1,6 @@
 package com.hufstudy.back.domain;
 
+import com.hufstudy.back.dto.UserDTO;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -17,8 +18,10 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //기본키 생성 디비가 알아서
     private Long id;
 
-    private String nickname;
+    @Column(unique = true)
     private String email;
+
+    private String nickname;
     private String password;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
